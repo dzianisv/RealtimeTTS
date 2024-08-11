@@ -16,7 +16,8 @@ class OpenAIEngine(BaseEngine):
 
     def __init__(self,
                  model: str = "tts-1",
-                 voice: str = "nova"):
+                 voice: str = "nova",
+                 openai_args: dict = dict()):
         """
         Initializes a openai realtime text to speech engine object.
 
@@ -31,7 +32,7 @@ class OpenAIEngine(BaseEngine):
         self.voices = ["alloy", "echo", "fable", "onyx", "nova", "shimmer"]
         self.model = model
         self.voice = voice
-        self.client = OpenAI()
+        self.client = OpenAI(**openai_args)
 
     def post_init(self):
         self.engine_name = "openai"
